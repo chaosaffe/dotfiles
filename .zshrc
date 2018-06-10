@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/chaosaffe/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,15 +72,21 @@ alias git=hub
 alias ll=ls -la
 alias h=helm
 export DEFAULT_USER=chaosaffe
-export GOPATH=/Users/chaosaffe/Documents/go
+export GOPATH=$HOME/Documents/go
 export PATH=$GOPATH/bin:$PATH
-export GPG_TTY=$(tty)
 source <(kubectl completion zsh)
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias gh="cd $GOPATH/src/github.com/"
 alias gl="cd $GOPATH/src/gitlab.com/"
 alias fm="cd $GOPATH/src/github.com/figome/"
 alias fp="cd $GOPATH/src/gitlab.com/figo-platform/"
 
-eval "$(ssh-agent -s)"
-ssh-add -K ~/.ssh/id_rsa_chaosaffe
+# Configure GPG Agent for YubiKey
+GPG_TTY=$(tty)
+export GPG_TTY
+if [ -z "$GPG_AGENT_INFO" ]; then
+    eval "$(gpg-agent --daemon --options ~/.gnupg/gpg-agent.conf)"
+fi
+
+# Configure SSH to use GPG
+SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+export SSH_AUTH_SOCK

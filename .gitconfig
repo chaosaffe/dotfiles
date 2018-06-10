@@ -1,7 +1,7 @@
 [user]
   name = Jason Murray
   email = jason.murray@figo.io
-	signingkey = 14532976
+	signingkey = 880E774A71B6B36581DF7739A931039A241EBC2A
 [alias]
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -66,5 +66,3 @@
 	sideband = false
 [commit]
 	gpgsign = true
-[gpg]
-	program = /usr/local/bin/gpg
