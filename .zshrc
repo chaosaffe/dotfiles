@@ -1,3 +1,4 @@
+export TERM="xterm-256color"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -32,7 +33,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting git)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting git kubetail)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -50,35 +51,22 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-
-
 # Custom profile
+export DEFAULT_USER=chaosaffe
+export GOPATH=$HOME/Documents/go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+
 alias k=kubectl
 alias g=hub
 alias git=hub
 alias ll=ls -la
 alias h=helm
-export DEFAULT_USER=chaosaffe
-export GOPATH=$HOME/Documents/go
-export PATH=$GOPATH/bin:$PATH
-source <(kubectl completion zsh)
 alias gh="cd $GOPATH/src/github.com/"
 alias gl="cd $GOPATH/src/gitlab.com/"
-alias fm="cd $GOPATH/src/github.com/figome/"
-alias fp="cd $GOPATH/src/gitlab.com/figo-platform/"
+alias me="cd $GOPATH/src/github.com/chaosaffe/"
+
+source <(kubectl completion zsh)
 
 # Configure GPG Agent for YubiKey
 GPG_TTY=$(tty)

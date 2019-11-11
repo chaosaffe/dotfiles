@@ -1,0 +1,31 @@
+Host *
+  PubkeyAuthentication yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+
+# Only send specified identities not all [no]
+IdentitiesOnly no
+
+# no password auth [yes]
+PasswordAuthentication no
+
+# Seconds to wait on connect [<system value>]
+ConnectTimeout 5
+
+# Use one socket per host, with fallback to create new ones [no]
+ControlMaster auto
+
+# Where to save the control socket
+ControlPath ~/.ssh/c-%r@%h:%p
+
+# Seconds to keep socket open after disconnect
+ControlPersist 150
+
+# Do not hash hostnames in known_hosts file [no]
+HashKnownHosts no
+
+# Idle timeout in seconds before sending a ping [0]
+ServerAliveInterval 5
+
+# Show host fingerprint as ASCII art [no]
+VisualHostKey no
