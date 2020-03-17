@@ -57,6 +57,7 @@ export GOPATH=$HOME/Documents/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 
+alias d=docker
 alias k=kubectl
 alias g=hub
 alias git=hub
@@ -65,6 +66,9 @@ alias h=helm
 alias gh="cd $GOPATH/src/github.com/"
 alias gl="cd $GOPATH/src/gitlab.com/"
 alias me="cd $GOPATH/src/github.com/chaosaffe/"
+alias ceph="kubectl -n rook-ceph exec -it \$(kubectl -n rook-ceph get pod -l "app=rook-ceph-tools" -o jsonpath='{.items[0].metadata.name}') -- ceph $@"
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 source <(kubectl completion zsh)
 
