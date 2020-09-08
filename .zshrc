@@ -73,6 +73,10 @@ alias ceph="kubectl -n rook-ceph exec -it \$(kubectl -n rook-ceph get pod -l "ap
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+## Functions
+dec() { gpg -d $@ | tar -xvz; }
+enc() { tar -cz $@ | gpg -r jason@chaosaffe.io -o $@.tgz.gpg -e; }
+
 ## Source external files
 source <(kubectl completion zsh)
 
