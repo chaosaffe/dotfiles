@@ -52,11 +52,14 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Custom profile
+
+## Exports
 export DEFAULT_USER=chaosaffe
 export GOPATH=$HOME/Documents/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 
+## Aliases
 alias d=docker
 alias k=kubectl
 alias g=hub
@@ -70,6 +73,7 @@ alias ceph="kubectl -n rook-ceph exec -it \$(kubectl -n rook-ceph get pod -l "ap
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+## Source external files
 source <(kubectl completion zsh)
 
 # Configure GPG Agent for YubiKey
