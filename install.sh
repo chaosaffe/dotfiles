@@ -15,10 +15,8 @@ sudo apt-get install \
   fonts-powerline \
   zsh-syntax-highlighting \
   scdaemon \
+  tmux \
   -y
-
-# chsh
-chsh -s $(which zsh)
 
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -64,3 +62,6 @@ install_file $DOTFILE
 DOTFILE=config
 TARGET_DIR=$HOME/.ssh
 install_file $DOTFILE
+
+# chsh
+chsh -s $(which tmux)
