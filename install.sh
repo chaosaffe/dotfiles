@@ -32,6 +32,8 @@ curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s ht
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
+dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
+
 # install config files
 SOURCE_DIR=$(dirname "$(readlink -f "$0")")
 echo $SOURCE_DIR
