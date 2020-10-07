@@ -2,7 +2,10 @@
 
 # add golang ppa
 sudo add-apt-repository ppa:longsleep/golang-backports
+
 sudo apt update
+
+sudo apt-get remove docker docker-engine docker.io containerd runc
 
 # install tools
 sudo apt-get install \
@@ -13,10 +16,23 @@ sudo apt-get install \
   wget \
   golang-go \
   fonts-powerline \
-  zsh-syntax-highlighting \
   scdaemon \
   tmux \
+  apt-transport-https \
+  ca-certificates \
+  gnupg-agent \
+  software-properties-common \
+  xclip \
   -y
+
+# install docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
