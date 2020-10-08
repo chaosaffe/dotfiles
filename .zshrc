@@ -72,6 +72,7 @@ alias me="cd $GOPATH/src/github.com/chaosaffe/"
 alias ceph="kubectl -n rook-ceph exec -it \$(kubectl -n rook-ceph get pod -l "app=rook-ceph-tools" -o jsonpath='{.items[0].metadata.name}') -- ceph $@"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias assume="source okta-assumerole"
 
 ## Functions
 dec() { gpg -d $@ | tar -xvz; }
@@ -79,6 +80,7 @@ enc() { tar -cz $@ | gpg -r jason@chaosaffe.io -o $@.tgz.gpg -e; }
 
 ## Source external files
 source <(kubectl completion zsh)
+source <(aws-okta completion zsh)
 
 # Configure GPG Agent for YubiKey
 GPG_TTY=$(tty)
