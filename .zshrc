@@ -78,6 +78,16 @@ alias cat="batcat"
 ## Functions
 dec() { gpg -d $@ | tar -xvz; }
 enc() { tar -cz $@ | gpg -r jason@chaosaffe.io -o $@.tgz.gpg -e; }
+unpack() {
+  export MOUNT_POINT=/media/$DEFAULT_USER/tmpfs
+  sudo mkdir -p $MOUNT_POINT && \
+  sudo mount -t tmpfs -o size=512m swap $MOUNT_POINT && \
+  gpg -d $@ | tar -xvzC $MOUNT_POINT && \
+  nautilus $MOUNT_POINT -n --no-default-window --no-desktop && \
+  sleep 5m && \
+  sudo umount -f /media/$DEFAULT_USER/tmpfs && \
+  sudo rm -Rf /media/$DEFAULT_USER/tmpfs
+}
 
 ## Source external files
 source <(kubectl completion zsh)
