@@ -23,7 +23,7 @@ sudo apt-get install \
   gnupg-agent \
   software-properties-common \
   xclip \
-  batcat \
+  bat \
   -y
 
 # install docker
