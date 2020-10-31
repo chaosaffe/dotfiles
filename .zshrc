@@ -73,6 +73,7 @@ alias ceph="kubectl -n rook-ceph exec -it \$(kubectl -n rook-ceph get pod -l "ap
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias assume="source okta-assumerole"
+alias cat="batcat"
 
 ## Functions
 dec() { gpg -d $@ | tar -xvz; }
