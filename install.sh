@@ -10,7 +10,7 @@ sudo apt update
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
 # install tools
-sudo apt-get install \
+sudo apt install \
   zsh \
   curl \
   git \
