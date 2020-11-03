@@ -44,6 +44,7 @@
   logtree = "log --graph --oneline --decorate --all"
   rb = rebase --autostash
   f = fetch -apt
+  npr = pull-request
 [push]
 	default = current
 [core]
