@@ -42,7 +42,7 @@
   sa = stash apply
   ss = stash save
   logtree = "log --graph --oneline --decorate --all"
-  rb = rebase
+  rb = rebase --autostash
   f = fetch -apt
 [push]
 	default = current
