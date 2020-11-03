@@ -74,3 +74,6 @@
 	insteadOf = https://bitbucket.org/
 [hub]
 	protocol = ssh
+[pager]
+	branch = less --quit-if-one-screen -R
+	tag = less --quit-if-one-screen -R
