@@ -58,6 +58,8 @@ export DEFAULT_USER=chaosaffe
 export GOPATH=$HOME/Documents/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/home/chaosaffe/.local/bin
+export PATH=$PATH:$(which aws_completer)
 
 ## Aliases
 alias d=docker
@@ -75,6 +77,8 @@ alias pbpaste='xclip -selection clipboard -o'
 alias assume="source okta-assumerole"
 alias tf="terraform"
 alias cat="batcat"
+alias ao="aws-okta"
+alias ass="assume"
 
 ## Functions
 dec() { gpg -d $@ | tar -xvz; }
@@ -111,3 +115,4 @@ fi
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+complete -o nospace -C $(which aws_completer) aws
