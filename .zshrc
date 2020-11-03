@@ -62,6 +62,9 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/home/chaosaffe/.local/bin
 export PATH=$PATH:$(which aws_completer)
+export HISTFILE=~/.zsh_history
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE
 
 ## Aliases
 alias d=docker
