@@ -77,3 +77,4 @@
 [pager]
 	branch = less --quit-if-one-screen -R
 	tag = less --quit-if-one-screen -R
+	diff = less --quit-if-one-screen -R
