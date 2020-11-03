@@ -72,3 +72,5 @@
 	insteadOf = https://github.com/
 [url "ssh://git@bitbucket.org/"]
 	insteadOf = https://bitbucket.org/
+[hub]
+	protocol = ssh
