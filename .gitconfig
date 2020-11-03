@@ -42,8 +42,10 @@
   sa = stash apply
   ss = stash save
   logtree = "log --graph --oneline --decorate --all"
-  rb = rebase
+  rb = rebase --autostash
   f = fetch -apt
+  npr = pull-request
+  purge = "!git branch --merged | grep -v \"\\* master\\|\\* main\" | xargs -n 1 git branch -d"
 [push]
 	default = current
 [core]
@@ -70,3 +72,8 @@
 	insteadOf = https://github.com/
 [url "ssh://git@bitbucket.org/"]
 	insteadOf = https://bitbucket.org/
+[hub]
+	protocol = ssh
+[pager]
+	branch = less --quit-if-one-screen -R
+	tag = less --quit-if-one-screen -R
