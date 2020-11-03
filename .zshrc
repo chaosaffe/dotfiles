@@ -73,6 +73,7 @@ alias ceph="kubectl -n rook-ceph exec -it \$(kubectl -n rook-ceph get pod -l "ap
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias assume="source okta-assumerole"
+alias tf="terraform"
 alias cat="batcat"
 
 ## Functions
@@ -107,3 +108,6 @@ export SSH_AUTH_SOCK
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

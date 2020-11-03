@@ -3,6 +3,8 @@
 # add golang ppa
 sudo add-apt-repository ppa:longsleep/golang-backports
 
+export TERRAFORM_VERSION=0.12.29
+
 sudo apt update
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -24,7 +26,10 @@ sudo apt-get install \
   software-properties-common \
   xclip \
   bat \
+  terraform=$TERRAFORM_VERSION \
   -y
+
+apt-mark hold terraform
 
 # install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
