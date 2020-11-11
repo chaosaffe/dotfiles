@@ -88,4 +88,4 @@ TARGET_DIR=$HOME/.ssh
 install_file $DOTFILE
 
 # chsh
-chsh -s $(which tmux)
+chsh -s $(which zsh)
