@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -euf -o pipefail
+
 # add golang ppa
 sudo add-apt-repository ppa:longsleep/golang-backports
 
