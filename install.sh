@@ -56,6 +56,8 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 
+dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < terminal-settings.dconf
+
 # install config files
 SOURCE_DIR=$(dirname "$(readlink -f "$0")")
 echo $SOURCE_DIR
