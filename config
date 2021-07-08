@@ -3,29 +3,110 @@ Host *
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
 
-# Only send specified identities not all [no]
-IdentitiesOnly no
+  # Only send specified identities not all [no]
+  IdentitiesOnly no
 
-# no password auth [yes]
-PasswordAuthentication no
+  # no password auth [yes]
+  PasswordAuthentication yes
 
-# Seconds to wait on connect [<system value>]
-ConnectTimeout 5
+  # Seconds to wait on connect [<system value>]
+  ConnectTimeout 5
 
-# Use one socket per host, with fallback to create new ones [no]
-ControlMaster auto
+  # Use one socket per host, with fallback to create new ones [no]
+  ControlMaster auto
 
-# Where to save the control socket
-ControlPath ~/.ssh/c-%r@%h:%p
+  # Where to save the control socket
+  ControlPath ~/.ssh/c-%r@%h:%p
 
-# Seconds to keep socket open after disconnect
-ControlPersist 150
+  # Seconds to keep socket open after disconnect
+  ControlPersist 5m
 
-# Do not hash hostnames in known_hosts file [no]
-HashKnownHosts no
+  # Do not hash hostnames in known_hosts file [no]
+  HashKnownHosts no
 
-# Idle timeout in seconds before sending a ping [0]
-ServerAliveInterval 5
+  # Idle timeout in seconds before sending a ping [0]
+  ServerAliveInterval 5
 
-# Show host fingerprint as ASCII art [no]
-VisualHostKey no
+  # Show host fingerprint as ASCII art [no]
+  VisualHostKey no
+
+Host bastion.development.telmediq.com
+    HostName               bastion.development.telmediq.com
+    ProxyCommand           none
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host 10.40.*
+    ServerAliveInterval    60
+    TCPKeepAlive           yes
+    ProxyCommand           ssh -A -o StrictHostKeyChecking=no -qaY centos@bastion.development.telmediq.com 'nc -w 14400ms %h %p'
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host bastion.staging.telmediq.com
+    HostName               bastion.staging.telmediq.com
+    ProxyCommand           none
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host 10.150.*
+    ServerAliveInterval    60
+    TCPKeepAlive           yes
+    ProxyCommand           ssh -A -o StrictHostKeyChecking=no -qaY centos@bastion.staging.telmediq.com 'nc -w 14400ms %h %p'
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host bastion.app.telmediq.com
+    HostName               bastion.app.telmediq.com
+    ProxyCommand           none
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host 10.200.* 10.208.* use1.production.telmediq.io
+    User                   jmurray
+    ServerAliveInterval    60
+    TCPKeepAlive           yes
+    ProxyCommand           ssh -A -o StrictHostKeyChecking=no -qaY centos@bastion.app.telmediq.com 'nc -w 14400ms %h %p'
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host bastion.eu-west-1.app.telmediq.com
+    HostName               bastion.eu-west-1.app.telmediq.com
+    ProxyCommand           none
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host 10.209.*
+    ServerAliveInterval    60
+    TCPKeepAlive           yes
+    ProxyCommand           ssh -A -o StrictHostKeyChecking=no -qaY centos@bastion.eu-west-1.app.telmediq.com 'nc -w 14400ms %h %p'
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host bastion.services.telmediq.net
+    HostName               bastion.services.telmediq.net
+    ProxyCommand           none
+    BatchMode              yes
+    ForwardAgent           yes
+
+Host 10.250.*
+    ServerAliveInterval    60
+    TCPKeepAlive           yes
+    ProxyCommand           ssh -A -o StrictHostKeyChecking=no -qaY centos@bastion.services.telmediq.net 'nc -w 14400ms %h %p'
+    BatchMode              yes
+    ForwardAgent           yes
+
+#Host bastion.services.telmediq.net
+#    HostName               bastion.services.telmediq.net
+#    ProxyCommand           none
+#    BatchMode              yes
+#    ForwardAgent           yes
+#
+#Host 10.10.*
+#    ServerAliveInterval    60
+#    TCPKeepAlive           yes
+#    ProxyCommand           ssh -A -o StrictHostKeyChecking=no -qaY centos@bastion.test.telmediq.net 'nc -w 14400ms %h %p'
+#    BatchMode              yes
+#    ForwardAgent           yes
+
+
